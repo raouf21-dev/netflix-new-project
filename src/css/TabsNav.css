@@ -1,0 +1,101 @@
+/* Tab Nav 1 */
+
+.tab-icon-door {
+    width: 2.8125rem;
+    height: 2.8125rem;
+    fill: var(--main-grey);
+}
+
+
+/* media Tab #nav1*/
+
+@media (max-width: 900px) {
+    .tab-icon-door {
+        width: 2.8rem;
+        height: 2.8rem;
+        margin-bottom: 15px;
+    }
+}
+/* Tab Nav 2 */
+.tab-icon-devices {
+    width: 9.6875rem;
+    height: 9.6875rem;
+    fill: var(--main-grey);
+}
+/* media Tab #nav2*/
+
+@media (max-width: 900px) {
+    .tab-icon-devices {
+        width: 8rem;
+        height: 8rem;
+        margin-bottom: -60px;
+    }
+}
+
+.tab-icon-price {
+    width: 4.375rem;
+    height: 4.375rem;
+    fill: var(--main-grey);
+}
+
+/* media Tab #nav3*/
+
+@media (max-width: 900px) {
+    .tab-icon-price {
+        width: 2.8rem;
+        height: 2.8rem;
+        margin-bottom: 15px;
+    }
+}
+.tabs { 
+    padding-top: 2rem; 
+}
+
+.tab-nav-container {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    align-items: flex-end;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1rem;
+    text-align: center;
+    color: var(--main-grey); 
+    margin: 0 12%;
+}
+
+/* Tabs Nav Hover  */
+
+ul li:hover {
+    color: #fff;
+    cursor: pointer;
+}
+
+ul li:hover svg path {
+    fill: #fff;
+}
+
+/* The Active Tab */
+.active {
+    border-bottom: 4px solid var(--main-red);
+}
+
+.tab-selected {
+    color: #fff;
+}
+.tab-selected svg path {
+    fill: #fff;
+}
+
+/* Media for Tabs */
+
+@media (min-width: 900px){
+    .mdScreen {
+        display: none;
+    }
+}
+
+@media (max-width: 900px){
+    .lgScreen {
+        display: none;
+    }
+}
