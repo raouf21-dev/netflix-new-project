@@ -26,7 +26,7 @@ class Header extends Component {
                             <h3>Ready to watch? Enter your email to create or restart your membership.</h3>
                             <div>
                                 <input type="text" placeholder="Email address"/>
-                                <Link className="getstarted-btn" to="/">GET STARTED <Icon className="angleIcon" size={40} icon={angle} /></Link>
+                                <Link className="getstarted-btn" to="/choose-plan">GET STARTED <Icon className="angleIcon" size={40} icon={angle} /></Link>
                             </div>
                         </Form>
                         </Showcase>

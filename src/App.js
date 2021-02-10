@@ -1,9 +1,9 @@
 import react from 'react';
 import { Switch, Route } from "react-router-dom";
 import './css/App.css';
-import ChoosePlan from './pages/ChoosePlan';
 import Main from './pages/index';
 import Login from './pages/Login';
+import ChoosePlan from './pages/ChoosePlan';
 
 function App() {
   return (
