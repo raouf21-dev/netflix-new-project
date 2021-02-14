@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Button } from '../Button';
 import './sign-up-form-style.js';
 import FormContainer from "./sign-up-form-style";
+import { auth, createUserProfileDocument } from '../firebase/firebase';
 
 class SignUpForm extends Component {
     constructor(){
@@ -17,11 +18,32 @@ class SignUpForm extends Component {
 
     handleChange = e => {
         const {name, value} = e.target;
-
         this.setState({[name]: value})
-        console.log(this.state);
     }
 
+    handleSubmit = async e => {
+        e.preventDefault();
+        const {displayName, email, password, confirmPassword} = this.state;
+
+        if(password !== confirmPassword){
+            alert("passwords don't match")
+            return;
+        }
+
+        try {
+            const {user} = await auth.createUserWithEmailAndPassword(email, password);
+
+            await createUserProfileDocument(user,{displayName});
+            this.setState({
+                displayName: '',
+                email: '',
+                password: '',
+                confirmPassword: ''
+            })
+        }catch(error){
+            console.error(error)
+        }
+    }
     render() {
         const {displayName, email, password, confirmPassword} = this.state;
         return (
@@ -35,7 +57,7 @@ class SignUpForm extends Component {
                                 type="text"
                                 name="displayName"
                                 value={displayName}
-                                required
+                                
                                 onChange={this.handleChange}
                             />
                             <label>Name</label>
@@ -46,7 +68,7 @@ class SignUpForm extends Component {
                                 type="email"
                                 name="email"
                                 value={email}
-                                required
+                                
                                 onChange={this.handleChange}
                         />
                             <label>Email</label>
@@ -57,7 +79,7 @@ class SignUpForm extends Component {
                                 type="password"
                                 name="password"
                                 value={password}
-                                required
+                                
                                 onChange={this.handleChange}
                         />
                             <label>Password</label>
@@ -69,7 +91,7 @@ class SignUpForm extends Component {
                                 type="password"
                                 name="confirmPassword"
                                 value={confirmPassword}
-                                required
+                                
                                 onChange={this.handleChange}
                         />
                             <label>confirm password</label>
