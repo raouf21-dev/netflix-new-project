@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom';
 import { Button } from '../Button';
-import { signInWithGoogle } from '../firebase/firebase';
+import { auth, signInWithGoogle } from '../firebase/firebase';
 import Header from '../Header';
 import FormContainer from "./loginFormStyle";
 
@@ -55,11 +55,20 @@ class LoginForm extends Component {
         return inputError;
     }
 
-    onSubmit = e => {
+    handleSubmit = async e => {
         e.preventDefault();
-        const err = this.validate();
-        if(!err){
-            this.setState(iniState);
+        const {email, password} = this.state;
+
+        try {
+            await auth.signInWithEmailAndPassword(email, password);
+            this.setState({email: '', password: ''});
+
+             setTimeout(() => {
+                window.location.href="/";   
+            }, 500);
+        }catch(error){
+            alert('please check email or password')
+            console.error(error)
         }
     }
 
@@ -79,7 +88,7 @@ class LoginForm extends Component {
                 {/* <Header/> */}
             <FormContainer>
                 <div className="form-container">
-                    <form>
+                    <form onSubmit={this.handleSubmit}>
                         <h1>Sign In</h1>
                         <div className="input-container">
                             <input
@@ -87,10 +96,10 @@ class LoginForm extends Component {
                                 type="email"
                                 value={email}
                                 name="email"
-                                required
+                                
                                 onChange={this.handleChange}
                             />
-                            <label>Email or Phone Number</label>
+                            <label>Email</label>
                             <span style={{color: '#db7302'}}>{this.state.emailError}</span>
                         </div>
                         <div
@@ -100,14 +109,14 @@ class LoginForm extends Component {
                                 type="password"
                                 value={password}
                                 name="password"
-                                required
+                                
                                 onChange={this.handleChange}
                                 />
                             <label>Password</label>
                             <span style={{color: '#db7302'}}>{this.state.passwordError}</span>
                         </div>
                         <div className="input-container">
-                            <Button type="submit" onClick={this.onSubmit}>Sign In</Button>
+                            <Button type="submit" onClick={this.handleSubmit}>Sign In</Button>
                         </div>
                         <label className="checkbox-container">
                             Remember me

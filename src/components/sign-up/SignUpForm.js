@@ -39,7 +39,11 @@ class SignUpForm extends Component {
                 email: '',
                 password: '',
                 confirmPassword: ''
-            })
+            });
+
+            setTimeout(() => {
+                window.location.href="/";   
+            }, 1000);
         }catch(error){
             console.error(error)
         }
