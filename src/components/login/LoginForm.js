@@ -65,7 +65,7 @@ class LoginForm extends Component {
 
              setTimeout(() => {
                 window.location.href="/";   
-            }, 500);
+            }, 1000);
         }catch(error){
             alert('please check email or password')
             console.error(error)
