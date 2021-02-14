@@ -8,16 +8,7 @@ import  Footer from "../components/Footer";
 function ChoosePlan() {
     return (
         <div style={{background: '#fff'}}>
-            <div className="container">
-                <HeaderTop className="header-top">
-                    <Link to="/">
-                        <img src={logo} alt="logo"/>
-                    </Link>
-                    <NavLink to="/login" className="btn singIn-btn">
-                        Sign In
-                    </NavLink>
-                </HeaderTop>
-            </div>
+            
             <MainContainer>
                 <div className="header-content">
                     <img className="checkmark-logo" src={checkMarkLogo} alt="checkmark"/>
