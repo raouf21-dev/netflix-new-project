@@ -1,6 +1,5 @@
 {
-  "homepage": "https://raouf21-dev.github.io/netflix-new-project",
-  "name": "netflix",
+  "name": "netflix-new",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -22,9 +21,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
